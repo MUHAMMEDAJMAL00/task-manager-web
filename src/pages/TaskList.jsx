@@ -15,6 +15,7 @@ import {
 import { Link, useSearchParams } from "react-router-dom";
 import { useTasks } from "../hooks/useTasks";
 import SearchBar from "../components/SearchBar";
+import { FiTrash2 } from "react-icons/fi";
 
 function TaskList() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -103,12 +104,16 @@ function TaskList() {
   return (
     <>
       <div className="tasks-header">
-        <Row className="mb-3 mt-4">
-          <Col>
-            <h2>My Tasks</h2>
+        <Row className="mb-3 mt-4 align-items-center">
+          <Col xs={12} sm={6} md={8}>
+            <h2 className="text-light mb-2 mb-sm-0">My Tasks</h2>
           </Col>
-          <Col xs="auto">
-            <Button variant="primary" onClick={() => setShowModal(true)}>
+          <Col xs={12} sm={6} md={4} className="text-sm-end">
+            <Button 
+              variant="primary" 
+              onClick={() => setShowModal(true)}
+              className="w-100 w-sm-auto"
+            >
               Add New Task
             </Button>
           </Col>
@@ -122,27 +127,35 @@ function TaskList() {
       />
 
       <Row className="mb-3">
-        <Col>
-          <ButtonGroup>
-            <Button
-              variant={filter === "all" ? "primary" : "outline-primary"}
-              onClick={() => handleFilterChange("all")}
-            >
-              All ({items.length})
-            </Button>
-            <Button
-              variant={filter === "pending" ? "warning" : "outline-warning"}
-              onClick={() => handleFilterChange("pending")}
-            >
-              Pending ({items.filter((t) => !t.completed).length})
-            </Button>
-            <Button
-              variant={filter === "completed" ? "success" : "outline-success"}
-              onClick={() => handleFilterChange("completed")}
-            >
-              Completed ({items.filter((t) => t.completed).length})
-            </Button>
-          </ButtonGroup>
+        <Col xs={12}>
+          <div className="d-flex flex-column flex-sm-row gap-2 gap-sm-0">
+            <ButtonGroup className="w-100 w-sm-auto">
+              <Button
+                variant={filter === "all" ? "primary" : "outline-primary"}
+                onClick={() => handleFilterChange("all")}
+                size="sm"
+              >
+                <span className="d-none d-md-inline">All</span>
+                <span className="d-md-none">All</span> ({items.length})
+              </Button>
+              <Button
+                variant={filter === "pending" ? "warning" : "outline-warning"}
+                onClick={() => handleFilterChange("pending")}
+                size="sm"
+              >
+                <span className="d-none d-md-inline">Pending</span>
+                <span className="d-md-none">Pending</span> ({items.filter((t) => !t.completed).length})
+              </Button>
+              <Button
+                variant={filter === "completed" ? "success" : "outline-success"}
+                onClick={() => handleFilterChange("completed")}
+                size="sm"
+              >
+                <span className="d-none d-md-inline">Completed</span>
+                <span className="d-md-none">Done</span> ({items.filter((t) => t.completed).length})
+              </Button>
+            </ButtonGroup>
+          </div>
         </Col>
       </Row>
 
@@ -151,9 +164,9 @@ function TaskList() {
           <Card.Body className="text-center py-5">
             <h5>No tasks found</h5>
             <p className="text-muted">
-              {searchTerm ? 
-                `No tasks match "${searchTerm}". Try a different search term.` :
-                filter === "all"
+              {searchTerm
+                ? `No tasks match "${searchTerm}". Try a different search term.`
+                : filter === "all"
                 ? "Start by adding your first task!"
                 : `No ${filter} tasks to display.`}
             </p>
@@ -165,18 +178,18 @@ function TaskList() {
             {filteredTasks.map((task) => (
               <ListGroup.Item
                 key={task.id}
-                className="d-flex align-items-center"
+                className="d-flex align-items-start align-sm-center py-3 px-2 px-sm-3"
               >
                 <Form.Check
                   type="checkbox"
                   checked={task.completed}
                   onChange={() => toggleTask(task.id)}
-                  className="me-3"
+                  className="me-2 me-sm-3 mt-1 mt-sm-0"
                 />
-                <div className="task-content flex-grow-1">
+                <div className="task-content flex-grow-1 me-2">
                   <Link
                     to={`/tasks/${task.id}`}
-                    className={`task-title text-decoration-none ${
+                    className={`task-title text-decoration-none d-block ${
                       task.completed ? "text-muted" : ""
                     }`}
                   >
@@ -188,21 +201,23 @@ function TaskList() {
                       {task.title}
                     </span>
                   </Link>
-                  <div className="task-meta">
+                  <div className="task-meta mt-1">
                     {task.completed && (
-                      <Badge bg="success" className="badge">
+                      <Badge bg="success" className="badge small">
                         Completed
                       </Badge>
                     )}
                   </div>
                 </div>
-                <div className="task-actions">
+                <div className="task-actions flex-shrink-0">
                   <Button
                     variant="outline-danger"
                     size="sm"
                     onClick={() => deleteTask(task.id)}
+                    title="Delete task"
+                    className="p-2"
                   >
-                    Delete
+                    <FiTrash2 size={14} />
                   </Button>
                 </div>
               </ListGroup.Item>
@@ -211,7 +226,11 @@ function TaskList() {
         </Card>
       )}
 
-      <Modal show={showModal} onHide={() => setShowModal(false)} className="add-task-modal">
+      <Modal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        className="add-task-modal"
+      >
         <Modal.Header closeButton>
           <Modal.Title>Add New Task</Modal.Title>
         </Modal.Header>
