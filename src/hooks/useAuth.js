@@ -6,11 +6,25 @@ export function useAuth() {
   const login = (userData) => {
     localStorage.setItem('auth', JSON.stringify(userData));
     dispatch({ type: 'LOGIN', payload: userData });
+    
+    // Load user-specific tasks after login
+    try {
+      const tasksData = localStorage.getItem(`tasks_${userData.id}`);
+      if (tasksData) {
+        const tasks = JSON.parse(tasksData);
+        dispatch({ type: 'LOAD_USER_TASKS', payload: tasks });
+      } else {
+        dispatch({ type: 'LOAD_USER_TASKS', payload: [] });
+      }
+    } catch (error) {
+      console.error('Error loading user tasks on login:', error);
+      localStorage.removeItem(`tasks_${userData.id}`);
+      dispatch({ type: 'LOAD_USER_TASKS', payload: [] });
+    }
   };
 
   const logout = () => {
     localStorage.removeItem('auth');
-    localStorage.removeItem('tasks');
     dispatch({ type: 'LOGOUT' });
   };
 
@@ -30,10 +44,8 @@ export function useAuth() {
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
     
-    const loginUser = { id: newUser.id, email: newUser.email, name: newUser.name };
-    login(loginUser);
-    
-    return loginUser;
+    // Return user data without auto-login
+    return { id: newUser.id, email: newUser.email, name: newUser.name };
   };
 
   const authenticateUser = (email, password) => {

@@ -12,7 +12,7 @@ function TaskDetails() {
   useEffect(() => {
     console.log(`TaskDetails mounted for task ${id}`);
 
-    const foundTask = items.find((t) => t.id === parseInt(id));
+    const foundTask = items.find((t) => t.id.toString() === id);
     setTask(foundTask);
 
     if (!foundTask && items.length > 0) {
@@ -25,12 +25,14 @@ function TaskDetails() {
   }, [id, items, navigate]);
 
   const handleToggle = () => {
-    toggleTask(parseInt(id));
+    const taskId = isNaN(parseFloat(id)) ? parseInt(id) : parseFloat(id);
+    toggleTask(taskId);
   };
 
   const handleDelete = () => {
     if (window.confirm("Are you sure you want to delete this task?")) {
-      deleteTask(parseInt(id));
+      const taskId = isNaN(parseFloat(id)) ? parseInt(id) : parseFloat(id);
+      deleteTask(taskId);
       navigate("/tasks");
     }
   };

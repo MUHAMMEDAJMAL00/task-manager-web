@@ -27,6 +27,16 @@ function appReducer(state, action) {
         },
       };
 
+    case 'LOAD_USER_TASKS':
+      return {
+        ...state,
+        tasks: {
+          items: action.payload,
+          loading: false,
+          error: null,
+        },
+      };
+
     case 'LOGOUT':
       return {
         ...state,
@@ -34,6 +44,11 @@ function appReducer(state, action) {
           isAuthenticated: false,
           user: null,
           loading: false,
+        },
+        tasks: {
+          items: [],
+          loading: false,
+          error: null,
         },
       };
 
@@ -132,6 +147,21 @@ export function AppProvider({ children }) {
       if (authData) {
         const user = JSON.parse(authData);
         dispatch({ type: 'LOGIN', payload: user });
+        
+        // Load user-specific tasks
+        try {
+          const tasksData = localStorage.getItem(`tasks_${user.id}`);
+          if (tasksData) {
+            const tasks = JSON.parse(tasksData);
+            dispatch({ type: 'LOAD_USER_TASKS', payload: tasks });
+          } else {
+            dispatch({ type: 'LOAD_USER_TASKS', payload: [] });
+          }
+        } catch (error) {
+          console.error('Error parsing user tasks data:', error);
+          localStorage.removeItem(`tasks_${user.id}`);
+          dispatch({ type: 'LOAD_USER_TASKS', payload: [] });
+        }
       } else {
         dispatch({ type: 'AUTH_CHECK_COMPLETE' });
       }
@@ -140,25 +170,14 @@ export function AppProvider({ children }) {
       localStorage.removeItem('auth');
       dispatch({ type: 'AUTH_CHECK_COMPLETE' });
     }
-
-    try {
-      const tasksData = localStorage.getItem('tasks');
-      if (tasksData) {
-        const tasks = JSON.parse(tasksData);
-        dispatch({ type: 'SET_TASKS', payload: tasks });
-      }
-    } catch (error) {
-      console.error('Error parsing tasks data:', error);
-      localStorage.removeItem('tasks');
-    }
   }, []);
 
   useEffect(() => {
-    if (state.tasks.items.length > 0) {
-      localStorage.setItem('tasks', JSON.stringify(state.tasks.items));
-      console.log('Tasks updated');
+    if (state.auth.isAuthenticated && state.auth.user) {
+      localStorage.setItem(`tasks_${state.auth.user.id}`, JSON.stringify(state.tasks.items));
+      console.log('Tasks updated for user:', state.auth.user.id);
     }
-  }, [state.tasks.items]);
+  }, [state.tasks.items, state.auth.user, state.auth.isAuthenticated]);
 
   const value = {
     ...state,
