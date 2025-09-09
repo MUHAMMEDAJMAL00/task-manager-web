@@ -1,48 +1,59 @@
-import { useState, useEffect } from 'react';
-import { 
-  Card, 
-  Button, 
-  Form, 
-  ListGroup, 
-  Badge, 
-  Spinner, 
-  Alert, 
+import { useState, useEffect } from "react";
+import {
+  Card,
+  Button,
+  Form,
+  ListGroup,
+  Badge,
+  Spinner,
+  Alert,
   Modal,
   Row,
   Col,
-  ButtonGroup
-} from 'react-bootstrap';
-import { Link, useSearchParams } from 'react-router-dom';
-import { useTasks } from '../hooks/useTasks';
+  ButtonGroup,
+} from "react-bootstrap";
+import { Link, useSearchParams } from "react-router-dom";
+import { useTasks } from "../hooks/useTasks";
+import SearchBar from "../components/SearchBar";
 
 function TaskList() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [showModal, setShowModal] = useState(false);
-  const [newTaskTitle, setNewTaskTitle] = useState('');
-  const [filter, setFilter] = useState(searchParams.get('status') || 'all');
+  const [newTaskTitle, setNewTaskTitle] = useState("");
+  const [filter, setFilter] = useState(searchParams.get("status") || "all");
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const { items, loading, error, fetchTasks, addTask, deleteTask, toggleTask, filterTasks } = useTasks();
+  const {
+    items,
+    loading,
+    error,
+    fetchTasks,
+    addTask,
+    deleteTask,
+    toggleTask,
+    filterTasks,
+  } = useTasks();
 
   useEffect(() => {
-    console.log('TaskList mounted');
-    
+    console.log("TaskList mounted");
+
     if (items.length === 0) {
       fetchTasks();
     }
 
     return () => {
-      console.log('TaskList unmounted');
+      console.log("TaskList unmounted");
     };
   }, []);
 
   useEffect(() => {
-    const currentFilter = searchParams.get('status') || 'all';
+    const currentFilter = searchParams.get("status") || "all";
     setFilter(currentFilter);
   }, [searchParams]);
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
-    if (newFilter === 'all') {
+    if (newFilter === "all") {
       setSearchParams({});
     } else {
       setSearchParams({ status: newFilter });
@@ -53,12 +64,18 @@ function TaskList() {
     e.preventDefault();
     if (newTaskTitle.trim()) {
       addTask(newTaskTitle.trim());
-      setNewTaskTitle('');
+      setNewTaskTitle("");
       setShowModal(false);
     }
   };
 
-  const filteredTasks = filterTasks(filter);
+  const filteredTasks = filterTasks(filter).filter((task) =>
+    task.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  };
 
   if (loading) {
     return (
@@ -85,37 +102,45 @@ function TaskList() {
 
   return (
     <>
-      <Row className="mb-4">
-        <Col>
-          <h2>My Tasks</h2>
-        </Col>
-        <Col xs="auto">
-          <Button variant="primary" onClick={() => setShowModal(true)}>
-            Add New Task
-          </Button>
-        </Col>
-      </Row>
+      <div className="tasks-header">
+        <Row className="mb-3 mt-4">
+          <Col>
+            <h2>My Tasks</h2>
+          </Col>
+          <Col xs="auto">
+            <Button variant="primary" onClick={() => setShowModal(true)}>
+              Add New Task
+            </Button>
+          </Col>
+        </Row>
+      </div>
+
+      <SearchBar
+        searchTerm={searchTerm}
+        onSearch={handleSearch}
+        placeholder="Search tasks by title..."
+      />
 
       <Row className="mb-3">
         <Col>
           <ButtonGroup>
             <Button
-              variant={filter === 'all' ? 'primary' : 'outline-primary'}
-              onClick={() => handleFilterChange('all')}
+              variant={filter === "all" ? "primary" : "outline-primary"}
+              onClick={() => handleFilterChange("all")}
             >
               All ({items.length})
             </Button>
             <Button
-              variant={filter === 'pending' ? 'warning' : 'outline-warning'}
-              onClick={() => handleFilterChange('pending')}
+              variant={filter === "pending" ? "warning" : "outline-warning"}
+              onClick={() => handleFilterChange("pending")}
             >
-              Pending ({items.filter(t => !t.completed).length})
+              Pending ({items.filter((t) => !t.completed).length})
             </Button>
             <Button
-              variant={filter === 'completed' ? 'success' : 'outline-success'}
-              onClick={() => handleFilterChange('completed')}
+              variant={filter === "completed" ? "success" : "outline-success"}
+              onClick={() => handleFilterChange("completed")}
             >
-              Completed ({items.filter(t => t.completed).length})
+              Completed ({items.filter((t) => t.completed).length})
             </Button>
           </ButtonGroup>
         </Col>
@@ -126,51 +151,67 @@ function TaskList() {
           <Card.Body className="text-center py-5">
             <h5>No tasks found</h5>
             <p className="text-muted">
-              {filter === 'all' 
-                ? "Start by adding your first task!" 
+              {searchTerm ? 
+                `No tasks match "${searchTerm}". Try a different search term.` :
+                filter === "all"
+                ? "Start by adding your first task!"
                 : `No ${filter} tasks to display.`}
             </p>
           </Card.Body>
         </Card>
       ) : (
-        <Card>
+        <Card className="task-list">
           <ListGroup variant="flush">
             {filteredTasks.map((task) => (
-              <ListGroup.Item key={task.id} className="d-flex align-items-center">
+              <ListGroup.Item
+                key={task.id}
+                className="d-flex align-items-center"
+              >
                 <Form.Check
                   type="checkbox"
                   checked={task.completed}
                   onChange={() => toggleTask(task.id)}
                   className="me-3"
                 />
-                <div className="flex-grow-1">
-                  <Link 
+                <div className="task-content flex-grow-1">
+                  <Link
                     to={`/tasks/${task.id}`}
-                    className={`text-decoration-none ${task.completed ? 'text-muted' : ''}`}
+                    className={`task-title text-decoration-none ${
+                      task.completed ? "text-muted" : ""
+                    }`}
                   >
-                    <span className={task.completed ? 'text-decoration-line-through' : ''}>
+                    <span
+                      className={
+                        task.completed ? "text-decoration-line-through" : ""
+                      }
+                    >
                       {task.title}
                     </span>
                   </Link>
-                  {task.completed && (
-                    <Badge bg="success" className="ms-2">Completed</Badge>
-                  )}
+                  <div className="task-meta">
+                    {task.completed && (
+                      <Badge bg="success" className="badge">
+                        Completed
+                      </Badge>
+                    )}
+                  </div>
                 </div>
-                <Button
-                  variant="outline-danger"
-                  size="sm"
-                  onClick={() => deleteTask(task.id)}
-                  className="ms-2"
-                >
-                  Delete
-                </Button>
+                <div className="task-actions">
+                  <Button
+                    variant="outline-danger"
+                    size="sm"
+                    onClick={() => deleteTask(task.id)}
+                  >
+                    Delete
+                  </Button>
+                </div>
               </ListGroup.Item>
             ))}
           </ListGroup>
         </Card>
       )}
 
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
+      <Modal show={showModal} onHide={() => setShowModal(false)} className="add-task-modal">
         <Modal.Header closeButton>
           <Modal.Title>Add New Task</Modal.Title>
         </Modal.Header>
@@ -192,7 +233,11 @@ function TaskList() {
             <Button variant="secondary" onClick={() => setShowModal(false)}>
               Cancel
             </Button>
-            <Button variant="primary" type="submit" disabled={!newTaskTitle.trim()}>
+            <Button
+              variant="primary"
+              type="submit"
+              disabled={!newTaskTitle.trim()}
+            >
               Add Task
             </Button>
           </Modal.Footer>
