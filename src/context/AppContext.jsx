@@ -6,6 +6,7 @@ const initialState = {
   auth: {
     isAuthenticated: false,
     user: null,
+    loading: true,
   },
   tasks: {
     items: [],
@@ -22,6 +23,7 @@ function appReducer(state, action) {
         auth: {
           isAuthenticated: true,
           user: action.payload,
+          loading: false,
         },
       };
 
@@ -31,6 +33,7 @@ function appReducer(state, action) {
         auth: {
           isAuthenticated: false,
           user: null,
+          loading: false,
         },
       };
 
@@ -106,6 +109,15 @@ function appReducer(state, action) {
         },
       };
 
+    case 'AUTH_CHECK_COMPLETE':
+      return {
+        ...state,
+        auth: {
+          ...state.auth,
+          loading: false,
+        },
+      };
+
     default:
       return state;
   }
@@ -120,10 +132,13 @@ export function AppProvider({ children }) {
       if (authData) {
         const user = JSON.parse(authData);
         dispatch({ type: 'LOGIN', payload: user });
+      } else {
+        dispatch({ type: 'AUTH_CHECK_COMPLETE' });
       }
     } catch (error) {
       console.error('Error parsing auth data:', error);
       localStorage.removeItem('auth');
+      dispatch({ type: 'AUTH_CHECK_COMPLETE' });
     }
 
     try {
