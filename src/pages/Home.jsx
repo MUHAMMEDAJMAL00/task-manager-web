@@ -127,7 +127,7 @@ function Home() {
                       </div>
 
                       <p className="mt-4 mb-0">
-                        <small className="text-light">
+                        <small className="home-footer-text">
                           Join thousands of users who've transformed their
                           productivity
                         </small>

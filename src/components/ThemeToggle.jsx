@@ -14,13 +14,10 @@ function ThemeToggle() {
       title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
     >
       {theme === "light" ? (
-        <FiMoon size={16} />
+        <FiMoon size={20} />
       ) : (
-        <FiSun size={16} />
+        <FiSun size={20} />
       )}
-      <span className="d-none d-md-inline ms-2">
-        {theme === "light" ? "Dark" : "Light"}
-      </span>
     </Button>
   );
 }
