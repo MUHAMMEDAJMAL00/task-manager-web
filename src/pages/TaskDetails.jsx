@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { useParams, Outlet, useNavigate, Link } from 'react-router-dom';
-import { Card, Button, Badge, Row, Col, Nav } from 'react-bootstrap';
-import { useTasks } from '../hooks/useTasks';
+import { useState, useEffect } from "react";
+import { useParams, Outlet, useNavigate, Link } from "react-router-dom";
+import { Card, Button, Badge, Row, Col, Nav } from "react-bootstrap";
+import { useTasks } from "../hooks/useTasks";
 
 function TaskDetails() {
   const { id } = useParams();
@@ -11,12 +11,12 @@ function TaskDetails() {
 
   useEffect(() => {
     console.log(`TaskDetails mounted for task ${id}`);
-    
-    const foundTask = items.find(t => t.id === parseInt(id));
+
+    const foundTask = items.find((t) => t.id === parseInt(id));
     setTask(foundTask);
 
     if (!foundTask && items.length > 0) {
-      navigate('/tasks');
+      navigate("/tasks");
     }
 
     return () => {
@@ -29,9 +29,9 @@ function TaskDetails() {
   };
 
   const handleDelete = () => {
-    if (window.confirm('Are you sure you want to delete this task?')) {
+    if (window.confirm("Are you sure you want to delete this task?")) {
       deleteTask(parseInt(id));
-      navigate('/tasks');
+      navigate("/tasks");
     }
   };
 
@@ -50,15 +50,20 @@ function TaskDetails() {
 
   return (
     <>
-      <Row className="mb-4">
+      <Row className="mb-4 ">
         <Col>
-          <Button as={Link} to="/tasks" variant="outline-secondary" className="mb-3">
+          <Button
+            as={Link}
+            to="/tasks"
+            variant="outline-secondary"
+            className="mb-3"
+          >
             ← Back to Tasks
           </Button>
         </Col>
       </Row>
 
-      <Card>
+      <Card className="task-details">
         <Card.Header>
           <div className="d-flex justify-content-between align-items-center">
             <h4 className="mb-0">Task Details</h4>
@@ -72,30 +77,53 @@ function TaskDetails() {
           </div>
         </Card.Header>
         <Card.Body>
-          <h5 className={task.completed ? 'text-decoration-line-through text-muted' : ''}>
-            {task.title}
-          </h5>
-          
+          <div className="task-details-title">
+            <h5
+              className={
+                task.completed ? "text-decoration-line-through text-muted" : ""
+              }
+            >
+              {task.title}
+            </h5>
+          </div>
+
           <Row className="mt-3">
             <Col md={6}>
-              <p><strong>Status:</strong> {task.completed ? 'Completed' : 'Pending'}</p>
-              <p><strong>Created:</strong> {new Date(task.createdAt).toLocaleDateString()}</p>
-              {task.updatedAt && (
-                <p><strong>Updated:</strong> {new Date(task.updatedAt).toLocaleDateString()}</p>
-              )}
+              <div className="task-meta-info">
+                <p>
+                  <strong>Status:</strong>{" "}
+                  {task.completed ? "Completed" : "Pending"}
+                </p>
+                <p>
+                  <strong>Created:</strong>{" "}
+                  {new Date(task.createdAt).toLocaleDateString()}
+                </p>
+                {task.updatedAt && (
+                  <p>
+                    <strong>Updated:</strong>{" "}
+                    {new Date(task.updatedAt).toLocaleDateString()}
+                  </p>
+                )}
+              </div>
             </Col>
           </Row>
 
-          <div className="mt-4">
-            <Button 
-              variant={task.completed ? "warning" : "success"} 
+          <div className="task-details-actions mt-4">
+            <Button
+              variant={task.completed ? "warning" : "success"}
               onClick={handleToggle}
               className="me-2"
             >
-              {task.completed ? 'Mark as Pending' : 'Mark as Completed'}
+              <span className="d-none d-md-inline">
+                {task.completed ? "Mark as Pending" : "Mark as Completed"}
+              </span>
+              <span className="d-md-none">
+                {task.completed ? "Pending" : "Complete"}
+              </span>
             </Button>
             <Button variant="danger" onClick={handleDelete}>
-              Delete Task
+              <span className="d-none d-md-inline">Delete Task</span>
+              <span className="d-md-none">Delete</span>
             </Button>
           </div>
         </Card.Body>
