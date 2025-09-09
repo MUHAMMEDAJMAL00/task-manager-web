@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
+import { ThemeProvider } from './context/ThemeContext';
 import Layout from './components/Layout';
 import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
@@ -14,37 +15,39 @@ import './styles/App.scss';
 
 function App() {
   return (
-    <AppProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<Signup />} />
-            <Route
-              path="tasks"
-              element={
-                <PrivateRoute>
-                  <TaskList />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="tasks/:id"
-              element={
-                <PrivateRoute>
-                  <TaskDetails />
-                </PrivateRoute>
-              }
-            >
-              <Route index element={<TaskOverview />} />
-              <Route path="edit" element={<TaskEdit />} />
+    <ThemeProvider>
+      <AppProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="login" element={<Login />} />
+              <Route path="signup" element={<Signup />} />
+              <Route
+                path="tasks"
+                element={
+                  <PrivateRoute>
+                    <TaskList />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="tasks/:id"
+                element={
+                  <PrivateRoute>
+                    <TaskDetails />
+                  </PrivateRoute>
+                }
+              >
+                <Route index element={<TaskOverview />} />
+                <Route path="edit" element={<TaskEdit />} />
+              </Route>
+              <Route path="*" element={<Navigate to="/" />} />
             </Route>
-            <Route path="*" element={<Navigate to="/" />} />
-          </Route>
-        </Routes>
-      </Router>
-    </AppProvider>
+          </Routes>
+        </Router>
+      </AppProvider>
+    </ThemeProvider>
   );
 }
 
