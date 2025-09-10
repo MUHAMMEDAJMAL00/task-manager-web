@@ -498,6 +498,24 @@ div[style*="paddingTop: 80px"] {
   }
 }
 
+// Floating theme toggle for auth pages
+.auth-theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 1050;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  padding: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  
+  @media (max-width: 768px) {
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
 // Home Page Hero Styles
 .home-page {
   position: relative;
@@ -1504,6 +1522,7 @@ div[style*="paddingTop: 80px"] {
       font-size: 1.5rem;
       margin-bottom: 0.75rem;
       text-align: center;
+      color: $primary-color !important;
     }
 
     .btn {
