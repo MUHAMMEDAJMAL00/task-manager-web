@@ -595,7 +595,7 @@ div[style*="paddingTop: 80px"] {
 
 .hero-subtitle {
   font-size: 1.25rem;
-  color: $gray-600;
+  color: #fff;
   font-weight: 400;
   line-height: 1.6;
 }
@@ -1876,7 +1876,7 @@ div[style*="paddingTop: 80px"] {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-right: 0 !important;/
+      margin-right: 0 !important;
     }
   }
 
@@ -1943,7 +1943,6 @@ div[style*="paddingTop: 80px"] {
       }
     }
 
-    // Dark mode navbar icons
     .nav-link {
       color: #fff !important;
 
@@ -1970,7 +1969,6 @@ div[style*="paddingTop: 80px"] {
       color: #fff !important;
     }
 
-    // Welcome text in navbar
     .small,
     .text-light {
       color: #fff !important;
@@ -2085,7 +2083,6 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Theme toggle button specific styling
   .theme-toggle-btn {
     border-color: rgba(255, 255, 255, 0.3);
 
@@ -2095,7 +2092,6 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Dark mode navbar dropdown
   .navbar {
     .dropdown {
       .dropdown-toggle {
@@ -2133,14 +2129,13 @@ div[style*="paddingTop: 80px"] {
         }
 
         &.disabled {
-          color: #e0e0e0 !important; // White text for welcome message in dark mode
+          color: #e0e0e0 !important;
 
           svg {
             color: #e0e0e0 !important;
           }
         }
 
-        // Theme toggle in dark mode dropdown
         .theme-toggle-btn {
           background: none !important;
           border: none !important;
@@ -2160,7 +2155,6 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Search bar dark mode styles
   .search-input-group {
     .search-icon {
       background-color: rgba(61, 61, 61, 0.9);
@@ -2182,7 +2176,6 @@ div[style*="paddingTop: 80px"] {
   }
 }
 
-// Search bar component styles
 .search-bar-container {
   margin-bottom: 1.5rem;
 }
@@ -2227,7 +2220,7 @@ div[style*="paddingTop: 80px"] {
 
   .search-input-group {
     .search-input {
-      font-size: 16px; // Prevents zoom on iOS
+      font-size: 16px;
     }
   }
 }
