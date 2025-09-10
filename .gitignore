@@ -25,3 +25,7 @@ dist-ssr
 
 # Claude Code settings
 .claude
+
+# Development-only yarn files (keep npm for production)
+yarn.lock.dev
+.yarnrc.dev
