@@ -55,11 +55,14 @@ function Login() {
   };
 
   return (
-    <div className="auth-page d-flex align-items-center justify-content-center py-5 mt-2 mx-auto px-3 px-md-5" style={{ minHeight: 'calc(100vh - 100px)' }}>
+    <div
+      className="auth-page d-flex align-items-center justify-content-center py-5 mt-2 mx-auto px-3 px-md-5"
+      style={{ minHeight: "calc(100vh - 100px)" }}
+    >
       <Container>
         <Row className="justify-content-center ">
           <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
-            {/* Back to Home */}
+            {/* Back hhome  */}
             <div className="text-center mb-4">
               <Button
                 as={Link}
@@ -96,7 +99,7 @@ function Login() {
                   </Alert>
                 )}
 
-                {/* Form */}
+                {/* this is form */}
                 <Form onSubmit={handleSubmit} className="auth-form">
                   <Form.Group className="mb-3">
                     <Form.Label className="auth-label">
@@ -173,7 +176,7 @@ function Login() {
               </Card.Body>
             </Card>
 
-            {/* Features Footer */}
+            {/* Features of Footer */}
             <div className="text-center mt-4">
               <Row className="g-3 justify-content-center">
                 <Col xs={4} sm={3}>

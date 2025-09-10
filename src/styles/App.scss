@@ -767,7 +767,7 @@ div[style*="paddingTop: 80px"] {
   color: $primary-color;
 }
 
-// Task specific styles
+// Task of specific styles
 .task-completed {
   .card-body {
     background-color: rgba($success-color, 0.05);
@@ -970,7 +970,7 @@ div[style*="paddingTop: 80px"] {
   color: #fff !important;
 }
 
-// Modern Forms
+// new modern typeForms
 .form-control {
   border-radius: 16px;
   border: 2px solid $gray-200;
@@ -1028,10 +1028,9 @@ div[style*="paddingTop: 80px"] {
   }
 }
 
-// Ultra-small mobile fixes (below 530px)
 @media (max-width: 530px) {
 
-  // Fix container overflow and spacing for very small screens
+
   .container-fluid {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -1040,7 +1039,6 @@ div[style*="paddingTop: 80px"] {
     overflow-x: hidden;
   }
 
-  // Page content ultra-small mobile improvements
   .page-content {
     padding-left: 0.25rem;
     padding-right: 0.25rem;
@@ -1049,7 +1047,6 @@ div[style*="paddingTop: 80px"] {
     overflow-x: hidden;
   }
 
-  // Tasks header ultra-small mobile fixes
   .tasks-header {
     margin-bottom: 1rem;
     margin-top: 0.125rem !important;
@@ -1086,7 +1083,6 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Filter buttons for ultra-small screens
   .btn-group {
     width: 100%;
     margin-bottom: 1rem;
@@ -1118,7 +1114,6 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Search bar ultra-small
   .search-bar-container {
     margin-bottom: 1rem;
     padding: 0;
@@ -1131,14 +1126,12 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Card spacing
   .card {
     margin-left: 0;
     margin-right: 0;
     border-radius: 12px;
   }
 
-  // Row spacing
   .row {
     margin-left: -0.25rem;
     margin-right: -0.25rem;
@@ -1149,7 +1142,6 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Home page specific ultra-small fixes
   .home-container {
     padding: 0;
     margin: 0;
@@ -1204,7 +1196,6 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Auth pages ultra-small fixes
   .auth-page {
     padding: 0.5rem;
 
@@ -1217,7 +1208,6 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Navbar ultra-small fixes
   .navbar {
     padding: 0.5rem 0;
     position: relative;
@@ -1237,7 +1227,6 @@ div[style*="paddingTop: 80px"] {
       padding: 0.4rem 0.8rem;
     }
 
-    // Force dropdown to appear properly - ultra-small screens
     .dropdown {
       position: static !important;
       z-index: 9999;
@@ -1256,7 +1245,7 @@ div[style*="paddingTop: 80px"] {
         justify-content: center;
 
         &::after {
-          display: none; // Hide default Bootstrap arrow
+          display: none;
         }
 
         &[aria-expanded="true"] {
@@ -1325,10 +1314,10 @@ div[style*="paddingTop: 80px"] {
           svg {
             margin-right: 0.75rem;
             flex-shrink: 0;
-            color: #333; // Force theme icon to be dark in light mode
+            color: #333;
           }
 
-          // Theme toggle specific styling in dropdown
+          // Theme styling in dropdown
           .theme-toggle-btn {
             background: none !important;
             border: none !important;
@@ -1341,9 +1330,8 @@ div[style*="paddingTop: 80px"] {
             }
           }
 
-          // Welcome name text in light mode dropdown
           &.disabled {
-            color: #333 !important; // Dark text for welcome message in light mode
+            color: #333 !important;
             font-weight: 500;
           }
         }
@@ -1357,23 +1345,20 @@ div[style*="paddingTop: 80px"] {
   }
 }
 
-// Additional Mobile Design Fixes
+// Additional Mobile Design 
 @media (max-width: 568px) {
 
-  // Fix container overflow and spacing
   .container-fluid {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
 
-  // Page content mobile improvements
   .page-content {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     padding-top: 0.5rem;
   }
 
-  // Better card spacing on mobile
   .card {
     margin-bottom: 1rem;
     border-radius: 0.75rem;
@@ -1389,7 +1374,6 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Mobile-optimized list items
   .list-group-item {
     padding: 0.75rem 0.5rem !important;
     border-left: none;
@@ -1405,7 +1389,6 @@ div[style*="paddingTop: 80px"] {
       border-bottom-right-radius: 0;
     }
 
-    // Better text wrapping and spacing
     .flex-grow-1 {
       min-width: 0;
       padding-right: 0.5rem;
@@ -1416,7 +1399,6 @@ div[style*="paddingTop: 80px"] {
       }
     }
 
-    // Mobile button optimization
     .btn-sm {
       font-size: 0.75rem;
       padding: 0.25rem 0.5rem;
@@ -1425,7 +1407,6 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Modal improvements for mobile
   .modal-dialog {
     margin: 0.5rem;
     max-width: calc(100% - 1rem);
@@ -1449,10 +1430,10 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Form improvements
+  // Form improvents
   .form-control {
     padding: 0.75rem;
-    font-size: 1rem; // Prevents zoom on iOS
+    font-size: 1rem;
     border-radius: 0.5rem;
   }
 
@@ -1461,7 +1442,6 @@ div[style*="paddingTop: 80px"] {
     font-weight: 500;
   }
 
-  // Better spacing for rows and columns
   .row {
     margin-left: -0.5rem;
     margin-right: -0.5rem;
@@ -1472,7 +1452,7 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Navbar mobile improvements
+  // Navbar mobile
   .navbar {
     padding: 0.5rem 0;
 
@@ -1498,7 +1478,6 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Touch-friendly improvements
   .btn {
     min-height: 44px;
     border-radius: 0.5rem;
@@ -1510,13 +1489,11 @@ div[style*="paddingTop: 80px"] {
     padding: 0.5rem 0.75rem;
   }
 
-  // Better spacing for page content
   .page-content {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
 
-  // Tasks section specific fixes
   .tasks-header {
     margin-bottom: 1rem;
 
@@ -1580,7 +1557,7 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Task list improvements
+  // Task list 
   .task-list {
     margin: 0;
     border-radius: 12px;
@@ -1654,14 +1631,12 @@ div[style*="paddingTop: 80px"] {
         }
       }
 
-      // Touch-friendly spacing
       &+.list-group-item {
         margin-top: 1px;
       }
     }
   }
 
-  // Task details page
   .task-details {
     .task-header {
       margin-bottom: 1.5rem;
@@ -1723,7 +1698,7 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Task details actions for ultra-small screens
+  // Task details ultra-small screens
   .task-details-actions {
     display: flex;
     flex-direction: column;
@@ -1784,7 +1759,6 @@ div[style*="paddingTop: 80px"] {
   }
 }
 
-// Modal styles
 .modal-content {
   border-radius: 12px;
   border: none;
@@ -1810,7 +1784,7 @@ div[style*="paddingTop: 80px"] {
   padding: 1.5rem;
 }
 
-// Global dropdown fixes for mobile
+//  dropdown fixing is here  for mobile
 @media (max-width: 768px) {
   .dropdown-menu {
     position: absolute !important;
@@ -1823,7 +1797,6 @@ div[style*="paddingTop: 80px"] {
   }
 }
 
-// Responsive adjust for tablets and larger phones
 @media (max-width: 768px) {
   .container {
     padding-left: 1rem;
@@ -1838,7 +1811,6 @@ div[style*="paddingTop: 80px"] {
     font-size: 0.9rem;
   }
 
-  // Tasks header improvements for medium mobile devices
   .tasks-header {
     margin-bottom: 1.5rem;
     margin-top: 0.25rem !important;
@@ -1868,7 +1840,6 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Filter buttons for medium devices
   .btn-group {
     .btn {
       font-size: 0.9rem;
@@ -1878,20 +1849,17 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Search bar improvements
   .search-bar-container {
     margin-bottom: 1.5rem;
     padding: 0 0.5rem;
   }
 
-  // Task list cards
   .task-list {
     margin: 0;
     border-radius: 16px;
     overflow: hidden;
   }
 
-  // Task details actions mobile layout
   .task-details-actions {
     display: flex;
     flex-direction: column;
@@ -1908,11 +1876,10 @@ div[style*="paddingTop: 80px"] {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-right: 0 !important; // Override me-2 class
+      margin-right: 0 !important;/
     }
   }
 
-  // Task edit form buttons layout
   .card-body {
     form {
       .btn {
@@ -1929,7 +1896,6 @@ div[style*="paddingTop: 80px"] {
     }
   }
 
-  // Navbar dropdown z-index fix
   .navbar {
     .dropdown-menu {
       z-index: 1050;
@@ -1944,7 +1910,6 @@ div[style*="paddingTop: 80px"] {
   }
 }
 
-// Dark mode styles 
 [data-theme="dark"] {
   body {
     background:

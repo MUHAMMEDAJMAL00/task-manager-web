@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   Form,
   Button,
@@ -7,28 +7,28 @@ import {
   Row,
   Col,
   Container,
-} from 'react-bootstrap';
-import { useAuth } from '../hooks/useAuth';
-import { Link, useNavigate } from 'react-router-dom';
+} from "react-bootstrap";
+import { useAuth } from "../hooks/useAuth";
+import { Link, useNavigate } from "react-router-dom";
 import {
-  FiLock,
-  FiMail,
-  FiArrowLeft,
-  FiShield,
-  FiZap,
-  FiSmartphone,
-  FiUserPlus,
   FiUser,
-} from 'react-icons/fi';
+  FiMail,
+  FiLock,
+  FiCheck,
+  FiArrowLeft,
+  FiStar,
+  FiBarChart,
+  FiZap,
+} from "react-icons/fi";
 
 function Signup() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const { signup } = useAuth();
@@ -36,7 +36,7 @@ function Signup() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -44,15 +44,15 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
+      setError("Passwords do not match");
       return;
     }
 
     if (formData.password.length < 6) {
-      setError('Password must be at least 6 characters');
+      setError("Password must be at least 6 characters");
       return;
     }
 
@@ -64,7 +64,7 @@ function Signup() {
         email: formData.email,
         password: formData.password,
       });
-      navigate('/login');
+      navigate("/tasks");
     } catch (err) {
       setError(err.message);
     } finally {
@@ -73,10 +73,10 @@ function Signup() {
   };
 
   return (
-    <div className="auth-page d-flex align-items-center justify-content-center py-5 mt-2 mx-auto px-3 px-md-5" style={{ minHeight: 'calc(100vh - 100px)' }}>
+    <div className="auth-page d-flex align-items-center justify-content-center min-vh-100 py-5">
       <Container>
         <Row className="justify-content-center">
-          <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
+          <Col xs={12} sm={10} md={12} lg={12} xl={12} xxl={12}>
             {/* Back to Home */}
             <div className="text-center mb-4">
               <Button
@@ -92,17 +92,17 @@ function Signup() {
 
             <Card className="auth-card border-0 shadow-lg">
               <Card.Body className="p-4 p-sm-5">
-                {/* Header */}
+                {/* Headerrrr */}
                 <div className="text-center mb-4">
                   <div className="auth-icon-container mx-auto mb-3">
                     <div className="auth-icon">
-                      <FiUserPlus size={28} />
+                      <FiUser size={28} />
                     </div>
                   </div>
 
                   <h2 className="auth-title mb-2">Create Account</h2>
-                  <p className="auth-subtitle mb-3 text-secondary">
-                    Join thousands of productive users
+                  <p className="auth-subtitle text-secondary mb-3">
+                    Get started with your personal task manager
                   </p>
                   <div className="auth-divider mx-auto"></div>
                 </div>
@@ -160,17 +160,20 @@ function Signup() {
                       name="password"
                       value={formData.password}
                       onChange={handleChange}
-                      placeholder="Enter your password"
+                      placeholder="Create a secure password"
                       className="auth-input"
                       required
                       minLength={6}
                       autoComplete="new-password"
                     />
+                    <Form.Text className="text-muted small">
+                      Use at least 6 characters for better security
+                    </Form.Text>
                   </Form.Group>
 
                   <Form.Group className="mb-4">
                     <Form.Label className="auth-label">
-                      <FiLock className="me-2" />
+                      <FiCheck className="me-2" />
                       Confirm Password
                     </Form.Label>
                     <Form.Control
@@ -205,8 +208,8 @@ function Signup() {
                         </>
                       ) : (
                         <>
-                          <FiUserPlus className="me-2" />
-                          Create Account
+                          <FiUser className="me-2" />
+                          Create My Account
                         </>
                       )}
                     </Button>
@@ -217,7 +220,7 @@ function Signup() {
                 <div className="text-center">
                   <div className="auth-divider-small mx-auto mb-3"></div>
                   <p className="auth-footer-text mb-0">
-                    Already have an account?{' '}
+                    Already have an account?{" "}
                     <Link to="/login" className="auth-link">
                       Sign in here
                     </Link>
@@ -226,31 +229,31 @@ function Signup() {
               </Card.Body>
             </Card>
 
-            {/* Features Footer */}
+            {/* Benefits Footer */}
             <div className="text-center mt-4">
               <Row className="g-3 justify-content-center">
-                <Col xs={4} sm={3}>
+                <Col xs={6} sm={4}>
                   <div className="feature-mini">
                     <div className="feature-mini-icon">
-                      <FiShield size={18} />
+                      <FiStar size={18} />
                     </div>
-                    <small className="text-light">Secure</small>
+                    <small className="text-lighti csn">Beautiful UI</small>
                   </div>
                 </Col>
-                <Col xs={4} sm={3}>
+                <Col xs={6} sm={4}>
+                  <div className="feature-mini">
+                    <div className="feature-mini-icon">
+                      <FiBarChart size={18} />
+                    </div>
+                    <small className="text-lighti csn">Productivity</small>
+                  </div>
+                </Col>
+                <Col xs={12} sm={4}>
                   <div className="feature-mini">
                     <div className="feature-mini-icon">
                       <FiZap size={18} />
                     </div>
-                    <small className="text-light">Fast</small>
-                  </div>
-                </Col>
-                <Col xs={4} sm={3}>
-                  <div className="feature-mini">
-                    <div className="feature-mini-icon">
-                      <FiSmartphone size={18} />
-                    </div>
-                    <small className="text-light">Mobile</small>
+                    <small className="text-lighti csn">Lightning Fast</small>
                   </div>
                 </Col>
               </Row>

@@ -16,9 +16,10 @@ function Layout() {
   const { isAuthenticated, user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  
-  // Check if current page is login or signup
-  const isAuthPage = location.pathname === '/login' || location.pathname === '/signup';
+
+  // Check current page is login or signup/
+  const isAuthPage =
+    location.pathname === "/login" || location.pathname === "/signup";
 
   const handleLogout = () => {
     logout();
@@ -29,11 +30,7 @@ function Layout() {
     <>
       {/* Show navbar only if not on auth pages */}
       {!isAuthPage && (
-        <Navbar
-          bg="primary"
-          variant="dark"
-          className="mb-3 mb-md-4 fixed-top"
-        >
+        <Navbar bg="primary" variant="dark" className="mb-3 mb-md-4 fixed-top">
           <Container fluid>
             <div
               className="navbar-content mx-auto d-flex justify-content-between align-items-center w-100"
@@ -43,7 +40,7 @@ function Layout() {
                 <FiCheckSquare className="me-2" />
                 TaskManager
               </Navbar.Brand>
-              
+
               {/* Desktop Menu */}
               <div className="d-none d-lg-flex align-items-center gap-3">
                 <Nav.Link
@@ -113,25 +110,41 @@ function Layout() {
                   >
                     <FiMenu size={18} />
                   </Dropdown.Toggle>
-                  
+
                   <Dropdown.Menu>
-                    <Dropdown.Item as={Link} to="/" className="d-flex align-items-center">
+                    <Dropdown.Item
+                      as={Link}
+                      to="/"
+                      className="d-flex align-items-center"
+                    >
                       <FiHome className="me-2" />
                       Home
                     </Dropdown.Item>
                     {isAuthenticated && (
-                      <Dropdown.Item as={Link} to="/tasks" className="d-flex align-items-center">
+                      <Dropdown.Item
+                        as={Link}
+                        to="/tasks"
+                        className="d-flex align-items-center"
+                      >
                         <FiCheckSquare className="me-2" />
                         Tasks
                       </Dropdown.Item>
                     )}
                     {!isAuthenticated && (
                       <>
-                        <Dropdown.Item as={Link} to="/login" className="d-flex align-items-center">
+                        <Dropdown.Item
+                          as={Link}
+                          to="/login"
+                          className="d-flex align-items-center"
+                        >
                           <FiLogIn className="me-2" />
                           Login
                         </Dropdown.Item>
-                        <Dropdown.Item as={Link} to="/signup" className="d-flex align-items-center">
+                        <Dropdown.Item
+                          as={Link}
+                          to="/signup"
+                          className="d-flex align-items-center"
+                        >
                           <FiUserPlus className="me-2" />
                           Sign Up
                         </Dropdown.Item>
@@ -148,7 +161,7 @@ function Layout() {
                         <Dropdown.Item disabled className="small">
                           Welcome, {user?.name || user?.email}!
                         </Dropdown.Item>
-                        <Dropdown.Item 
+                        <Dropdown.Item
                           onClick={handleLogout}
                           className="d-flex align-items-center text-danger"
                         >
