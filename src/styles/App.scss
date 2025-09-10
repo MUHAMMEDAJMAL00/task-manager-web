@@ -1098,6 +1098,22 @@ div[style*="paddingTop: 80px"] {
   }
 }
 
+// Back to Home button in auth pages
+.text-light {
+  // Light mode - make "Back to Home" text black
+  :root:not([data-theme="dark"]) & {
+    color: #000 !important;
+  }
+}
+
+// Override Bootstrap text-white class in light mode
+.text-white {
+  // Light mode - make white text black for visibility
+  :root:not([data-theme="dark"]) & {
+    color: #000 !important;
+  }
+}
+
 // new modern typeForms
 .form-control {
   border-radius: 16px;
