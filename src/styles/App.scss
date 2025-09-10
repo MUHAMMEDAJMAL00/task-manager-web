@@ -80,7 +80,7 @@ html {
     padding-left: 1rem;
     padding-right: 1rem;
   }
-  
+
   @media (max-width: 530px) {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
@@ -92,7 +92,7 @@ html {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
-  
+
   @media (max-width: 530px) {
     padding-left: 0.25rem;
     padding-right: 0.25rem;
@@ -129,7 +129,7 @@ div {
 .min-vh-100 {
   margin-top: 0 !important;
   padding-top: 1rem !important;
-  
+
   @media (max-width: 768px) {
     padding-top: 0.5rem !important;
   }
@@ -139,7 +139,7 @@ div {
 div[style*="paddingTop: 80px"] {
   padding-top: 80px !important;
   transition: none !important;
-  
+
   @media (max-width: 768px) {
     padding-top: 75px !important;
   }
@@ -149,25 +149,25 @@ div[style*="paddingTop: 80px"] {
 .tasks-header {
   margin-top: 0 !important;
   margin-bottom: 2rem;
-  
+
   // Add margin top for bigger screens
   @media (min-width: 769px) {
     margin-top: 2rem !important;
   }
-  
+
   .row {
     margin-top: 0 !important;
     margin-bottom: 0.5rem;
   }
-  
+
   .row.mt-4 {
     margin-top: 0.25rem !important;
-    
+
     @media (max-width: 768px) {
       margin-top: 0.125rem !important;
     }
   }
-  
+
   h2 {
     margin-top: 0 !important;
   }
@@ -176,16 +176,17 @@ div[style*="paddingTop: 80px"] {
 // Page content bottom spacing
 .page-content {
   margin-bottom: 2rem;
-  
+
   @media (max-width: 768px) {
     margin-bottom: 1.5rem;
   }
 }
 
 // Tasks page specific container
-.task-list, .card {
+.task-list,
+.card {
   margin-bottom: 2rem;
-  
+
   @media (max-width: 768px) {
     margin-bottom: 1.5rem;
   }
@@ -443,7 +444,7 @@ div[style*="paddingTop: 80px"] {
   width: 100% !important;
   max-width: 100% !important;
   min-width: 100% !important;
-  
+
   .card-header,
   .card-body {
     width: 100% !important;
@@ -457,10 +458,10 @@ div[style*="paddingTop: 80px"] {
   width: 100% !important;
   min-width: 100% !important;
   flex-wrap: nowrap !important;
-  
+
   .nav-item {
     flex: 1 !important;
-    
+
     .nav-link {
       width: 100% !important;
       text-align: center !important;
@@ -470,14 +471,17 @@ div[style*="paddingTop: 80px"] {
 }
 
 // Stabilize outlet content containers
-.card-body > div,
+.card-body>div,
 .card-body form {
   width: 100% !important;
   max-width: 100% !important;
 }
 
 // Prevent any layout shifts in container elements
-.row, .col, .container, .container-fluid {
+.row,
+.col,
+.container,
+.container-fluid {
   width: 100%;
   max-width: 100%;
   min-height: fit-content;
@@ -492,7 +496,7 @@ div[style*="paddingTop: 80px"] {
   max-width: 100% !important;
   min-width: 100% !important;
   position: relative !important;
-  
+
   * {
     box-sizing: border-box !important;
   }
@@ -509,7 +513,7 @@ div[style*="paddingTop: 80px"] {
   border-radius: 50px;
   padding: 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  
+
   @media (max-width: 768px) {
     top: 1rem;
     right: 1rem;
@@ -520,7 +524,7 @@ div[style*="paddingTop: 80px"] {
 .home-page {
   position: relative;
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  
+
   // Add margin top and padding top for bigger screens
   @media (min-width: 769px) {
     margin-top: 5rem;
@@ -567,7 +571,7 @@ div[style*="paddingTop: 80px"] {
   font-weight: 800;
   // color: $gray-800;
   color: #fff;
-  
+
   // Add margin-top for big screens only
   @media (min-width: 769px) {
     margin-top: 2rem;
@@ -1025,6 +1029,7 @@ div[style*="paddingTop: 80px"] {
 
 // Ultra-small mobile fixes (below 530px)
 @media (max-width: 530px) {
+
   // Fix container overflow and spacing for very small screens
   .container-fluid {
     padding-left: 0.5rem;
@@ -1137,7 +1142,7 @@ div[style*="paddingTop: 80px"] {
     margin-left: -0.25rem;
     margin-right: -0.25rem;
 
-    > [class*="col-"] {
+    >[class*="col-"] {
       padding-left: 0.25rem;
       padding-right: 0.25rem;
     }
@@ -1281,7 +1286,7 @@ div[style*="paddingTop: 80px"] {
         opacity: 0;
         transition: all 0.15s ease-out;
         overflow: hidden;
-        
+
         &.show {
           display: block !important;
           visibility: visible !important;
@@ -1303,7 +1308,8 @@ div[style*="paddingTop: 80px"] {
           min-height: 48px;
           transition: all 0.2s ease;
 
-          &:hover, &:focus {
+          &:hover,
+          &:focus {
             background-color: rgba(99, 102, 241, 0.1);
             color: #6366f1;
             transform: translateX(4px);
@@ -1328,7 +1334,7 @@ div[style*="paddingTop: 80px"] {
             padding: 0 !important;
             margin: 0 !important;
             color: #333 !important;
-            
+
             svg {
               color: #333 !important;
             }
@@ -1808,7 +1814,7 @@ div[style*="paddingTop: 80px"] {
   .dropdown-menu {
     position: absolute !important;
     z-index: 1050 !important;
-    
+
     &.show {
       display: block !important;
       visibility: visible !important;
@@ -1914,7 +1920,7 @@ div[style*="paddingTop: 80px"] {
         margin-bottom: 0.75rem;
         margin-left: 0 !important;
         margin-right: 0 !important;
-        
+
         &:last-child {
           margin-bottom: 0;
         }
@@ -1965,7 +1971,7 @@ div[style*="paddingTop: 80px"] {
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      
+
       svg {
         color: #fff !important;
       }
@@ -1974,7 +1980,7 @@ div[style*="paddingTop: 80px"] {
     // Dark mode navbar icons
     .nav-link {
       color: #fff !important;
-      
+
       svg {
         color: #fff !important;
       }
@@ -1983,11 +1989,11 @@ div[style*="paddingTop: 80px"] {
     .btn {
       color: #fff !important;
       border-color: rgba(255, 255, 255, 0.3);
-      
+
       svg {
         color: #fff !important;
       }
-      
+
       &:hover {
         color: #fff !important;
         border-color: rgba(255, 255, 255, 0.5);
@@ -1999,7 +2005,8 @@ div[style*="paddingTop: 80px"] {
     }
 
     // Welcome text in navbar
-    .small, .text-light {
+    .small,
+    .text-light {
       color: #fff !important;
     }
   }
@@ -2149,10 +2156,11 @@ div[style*="paddingTop: 80px"] {
           color: #fff !important;
         }
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
           background-color: rgba(99, 102, 241, 0.2);
           color: #818cf8;
-          
+
           svg {
             color: #818cf8 !important;
           }
@@ -2160,7 +2168,7 @@ div[style*="paddingTop: 80px"] {
 
         &.disabled {
           color: #e0e0e0 !important; // White text for welcome message in dark mode
-          
+
           svg {
             color: #e0e0e0 !important;
           }
@@ -2173,7 +2181,7 @@ div[style*="paddingTop: 80px"] {
           padding: 0 !important;
           margin: 0 !important;
           color: #fff !important;
-          
+
           svg {
             color: #fff !important;
           }
