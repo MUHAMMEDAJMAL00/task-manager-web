@@ -387,12 +387,17 @@ div[style*="paddingTop: 80px"] {
     border-radius: 25px;
     transition: all 0.3s ease;
     position: relative;
+    color: #fff !important; // Always white in navbar
 
-
+    // Ensure navbar links stay white in light mode
+    :root:not([data-theme="dark"]) & {
+      color: #fff !important;
+    }
 
     &:hover {
       background: rgba(255, 255, 255, 0.1);
       transform: translateY(-1px);
+      color: #fff !important; // Keep white on hover
     }
   }
 
@@ -401,11 +406,27 @@ div[style*="paddingTop: 80px"] {
     padding: 0.5rem 1.5rem;
     font-weight: 600;
     border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff !important; // Always white in navbar
+
+    // Ensure navbar buttons stay white in light mode
+    :root:not([data-theme="dark"]) & {
+      color: #fff !important;
+    }
 
     &:hover {
       background: rgba(255, 255, 255, 0.2);
       border-color: rgba(255, 255, 255, 0.5);
       transform: translateY(-2px);
+      color: #fff !important; // Keep white on hover
+    }
+  }
+
+  .navbar-text {
+    color: #fff !important; // Always white in navbar
+
+    // Ensure navbar text stays white in light mode
+    :root:not([data-theme="dark"]) & {
+      color: #fff !important;
     }
   }
 }
