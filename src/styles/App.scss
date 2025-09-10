@@ -528,11 +528,18 @@ div[style*="paddingTop: 80px"] {
   top: 1.5rem;
   right: 1.5rem;
   z-index: 1050;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1); // Default dark mode
   backdrop-filter: blur(10px);
   border-radius: 50px;
   padding: 0.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2); // Default dark mode
+
+  // Light mode - make theme toggle more visible
+  :root:not([data-theme="dark"]) & {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
 
   @media (max-width: 768px) {
     top: 1rem;
@@ -573,15 +580,27 @@ div[style*="paddingTop: 80px"] {
     background: linear-gradient(135deg, rgba($primary-color, 0.1) 0%, rgba($primary-color, 0.05) 100%);
     border-radius: 50%;
     display: flex;
-    color: #fff;
+    color: #fff; // Default dark mode
     align-items: center;
     justify-content: center;
     border: 3px solid rgba($primary-color, 0.1);
     transition: all 0.3s ease;
 
+    // Light mode - make icon dark with white background
+    :root:not([data-theme="dark"]) & {
+      color: #333;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 240, 240, 0.8) 100%);
+      border: 3px solid rgba($primary-color, 0.3);
+    }
+
     &:hover {
       transform: scale(1.1) rotate(5deg);
       border-color: rgba($primary-color, 0.3);
+
+      // Light mode hover
+      :root:not([data-theme="dark"]) & {
+        border-color: rgba($primary-color, 0.5);
+      }
     }
   }
 }
@@ -589,8 +608,7 @@ div[style*="paddingTop: 80px"] {
 .hero-title {
   font-size: 3.5rem;
   font-weight: 800;
-  // color: $gray-800;
-  color: #fff;
+  color: #fff; // Default dark mode
 
   // Add margin-top for big screens only
   @media (min-width: 769px) {
@@ -603,6 +621,11 @@ div[style*="paddingTop: 80px"] {
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  // Light mode - make TaskManager title black
+  :root:not([data-theme="dark"]) & {
+    color: #000;
+  }
 }
 
 .hero-divider {
@@ -614,16 +637,27 @@ div[style*="paddingTop: 80px"] {
 
 .hero-subtitle {
   font-size: 1.25rem;
-  color: #fff;
+  color: #fff; // Default dark mode
   font-weight: 400;
   line-height: 1.6;
+
+  // Light mode - make subtitle black
+  :root:not([data-theme="dark"]) & {
+    color: #000;
+  }
 }
 
 .hero-card {
-  background: rgba(42, 41, 41, 0.85);
+  background: rgba(42, 41, 41, 0.85); // Default dark mode
   backdrop-filter: blur(20px);
   border-radius: 24px;
   overflow: hidden;
+
+  // Light mode - make card background light
+  :root:not([data-theme="dark"]) & {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
 
   &:hover {
     transform: translateY(-5px);
@@ -633,13 +667,23 @@ div[style*="paddingTop: 80px"] {
 .welcome-title {
   font-size: 1.8rem;
   font-weight: 700;
-  color: $gray-800;
+  color: $gray-800; // Default
+
+  // Light mode - keep it dark for contrast
+  :root:not([data-theme="dark"]) & {
+    color: #000;
+  }
 }
 
 .welcome-text {
   font-size: 1.1rem;
-  color: $gray-600;
+  color: $gray-600; // Default
   margin-bottom: 0;
+
+  // Light mode - make it darker for better contrast
+  :root:not([data-theme="dark"]) & {
+    color: #333;
+  }
 }
 
 .feature-item {
@@ -648,9 +692,14 @@ div[style*="paddingTop: 80px"] {
 
   .feature-icon {
     font-size: 2.5rem;
-    color: #fff;
+    color: #fff; // Default dark mode
     filter: grayscale(0.3);
     transition: all 0.3s ease;
+
+    // Light mode - make icons dark
+    :root:not([data-theme="dark"]) & {
+      color: #333;
+    }
   }
 
   &:hover .feature-icon {
@@ -659,8 +708,13 @@ div[style*="paddingTop: 80px"] {
   }
 
   small {
-    color: #fff !important;
+    color: #fff !important; // Default dark mode
     white-space: nowrap;
+
+    // Light mode - make text dark
+    :root:not([data-theme="dark"]) & {
+      color: #333 !important;
+    }
   }
 }
 
@@ -818,15 +872,27 @@ div[style*="paddingTop: 80px"] {
 }
 
 .auth-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.95); // Default (works for both modes)
   backdrop-filter: blur(20px);
   border-radius: 24px;
   overflow: hidden;
   transition: all 0.4s ease;
 
+  // Light mode - ensure proper card visibility
+  :root:not([data-theme="dark"]) & {
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
   &:hover {
     transform: translateY(-8px);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15) !important;
+
+    // Light mode hover
+    :root:not([data-theme="dark"]) & {
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2) !important;
+    }
   }
 }
 
@@ -844,10 +910,23 @@ div[style*="paddingTop: 80px"] {
     justify-content: center;
     border: 2px solid rgba($primary-color, 0.1);
     transition: all 0.3s ease;
+    color: $primary-color; // Default icon color
+
+    // Light mode - ensure icon visibility
+    :root:not([data-theme="dark"]) & {
+      background: linear-gradient(135deg, rgba($primary-color, 0.15) 0%, rgba($primary-color, 0.08) 100%);
+      border: 2px solid rgba($primary-color, 0.3);
+      color: darken($primary-color, 10%);
+    }
 
     &:hover {
       transform: scale(1.1);
       border-color: rgba($primary-color, 0.3);
+
+      // Light mode hover
+      :root:not([data-theme="dark"]) & {
+        border-color: rgba($primary-color, 0.5);
+      }
     }
   }
 }
@@ -961,14 +1040,24 @@ div[style*="paddingTop: 80px"] {
 .feature-mini {
   text-align: center;
   padding: 0.75rem 0.5rem;
-  color: #fff;
+  color: #fff; // Default dark mode
+
+  // Light mode - make text dark
+  :root:not([data-theme="dark"]) & {
+    color: #333;
+  }
 
   .feature-mini-icon {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    color: #fff;
+    color: #fff; // Default dark mode
     filter: grayscale(0.5);
     transition: all 0.3s ease;
+
+    // Light mode - make icons dark
+    :root:not([data-theme="dark"]) & {
+      color: #333;
+    }
   }
 
   &:hover .feature-mini-icon {
@@ -979,14 +1068,24 @@ div[style*="paddingTop: 80px"] {
   small {
     font-size: 0.8rem;
     font-weight: 500;
-    color: #fff;
+    color: #fff; // Default dark mode
     white-space: nowrap;
+
+    // Light mode - make text dark
+    :root:not([data-theme="dark"]) & {
+      color: #333;
+    }
   }
 }
 
 // Footer text styling for home page
 .home-footer-text {
-  color: #fff !important;
+  color: #fff !important; // Default dark mode
+
+  // Light mode - make text dark
+  :root:not([data-theme="dark"]) & {
+    color: #666 !important;
+  }
 }
 
 // new modern typeForms
