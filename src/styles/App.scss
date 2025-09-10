@@ -659,12 +659,18 @@ div[style*="paddingTop: 80px"] {
   font-size: 3.5rem;
   font-weight: 800;
   color: #fff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
 
   @media (min-width: 769px) {
     margin-top: 2rem;
   }
 
-  .text-primary {
+  .text-gradient {
     background: $gradient-primary;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
