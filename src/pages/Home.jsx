@@ -33,7 +33,7 @@ function Home() {
               </h1>
               <div className="hero-divider mx-auto mb-4"></div>
 
-              <p className="hero-subtitle text-whitemb-5 px-2">
+              <p className="hero-subtitle text-white mb-5 px-2">
                 Transform your productivity with our beautifully crafted task
                 management experience
               </p>
