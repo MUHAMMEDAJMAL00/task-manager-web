@@ -28,7 +28,7 @@ function Layout() {
 
   return (
     <>
-      {/* Show navbar only if not on auth pages */}
+      {/* Show navbar   */}
       {!isAuthPage && (
         <Navbar bg="primary" variant="dark" className="mb-3 mb-md-4 fixed-top">
           <Container fluid>
@@ -41,7 +41,7 @@ function Layout() {
                 TaskManager
               </Navbar.Brand>
 
-              {/* Desktop Menu */}
+              {/* Desktop */}
               <div className="d-none d-lg-flex align-items-center gap-3">
                 <Nav.Link
                   as={Link}
@@ -100,7 +100,7 @@ function Layout() {
                 )}
               </div>
 
-              {/* Mobile Dropdown Menu */}
+              {/* Mobile dropdwn Menusss */}
               <div className="d-lg-none">
                 <Dropdown align="end">
                   <Dropdown.Toggle
@@ -178,7 +178,7 @@ function Layout() {
         </Navbar>
       )}
 
-      {/* Floating theme toggle for auth pages */}
+      {/* Floating pages for auth*/}
       {isAuthPage && (
         <div className="auth-theme-toggle">
           <ThemeToggle />
