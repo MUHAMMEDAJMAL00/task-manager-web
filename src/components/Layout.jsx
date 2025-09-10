@@ -22,8 +22,10 @@ function Layout() {
     location.pathname === "/login" || location.pathname === "/signup";
 
   const handleLogout = () => {
-    logout();
-    navigate("/login");
+    if (window.confirm("Are you sure you want to logout?")) {
+      logout();
+      navigate("/login");
+    }
   };
 
   return (

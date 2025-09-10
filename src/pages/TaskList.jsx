@@ -78,6 +78,12 @@ function TaskList() {
     setSearchTerm(term);
   };
 
+  const handleDeleteTask = (taskId, taskTitle) => {
+    if (window.confirm(`Are you sure you want to delete "${taskTitle}"?`)) {
+      deleteTask(taskId);
+    }
+  };
+
   if (loading) {
     return (
       <div className="text-center mt-5">
@@ -206,7 +212,7 @@ function TaskList() {
                   <Button
                     variant="outline-danger"
                     size="sm"
-                    onClick={() => deleteTask(task.id)}
+                    onClick={() => handleDeleteTask(task.id, task.title)}
                     title="Delete task"
                     className="p-2"
                   >

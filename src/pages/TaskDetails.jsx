@@ -30,7 +30,7 @@ function TaskDetails() {
   };
 
   const handleDelete = () => {
-    if (window.confirm("Are you sure you want to delete this task?")) {
+    if (window.confirm(`Are you sure you want to delete "${task.title}"?`)) {
       const taskId = isNaN(parseFloat(id)) ? parseInt(id) : parseFloat(id);
       deleteTask(taskId);
       navigate("/tasks");
