@@ -199,6 +199,18 @@ div[style*="paddingTop: 80px"] {
   flex-shrink: 0 !important;
 }
 
+// Done text styling in task filter buttons
+.btn-group .btn {
+  &.btn-success,
+  &.btn-outline-success {
+    color: #10b981 !important; // Light green for "Done" text
+    
+    &:hover {
+      color: white !important;
+    }
+  }
+}
+
 // Mobile-specific improvements
 .list-group-item {
   @media (max-width: 768px) {
