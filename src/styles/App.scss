@@ -106,13 +106,23 @@ h3,
 h4,
 h5,
 h6 {
-  color: $gray-800;
+  color: $gray-800; // Default
+
+  // Light mode - ensure all headings are dark
+  :root:not([data-theme="dark"]) & {
+    color: #000 !important;
+  }
 }
 
 p,
 span,
 div {
   color: inherit;
+
+  // Light mode - make text black for maximum visibility
+  :root:not([data-theme="dark"]) & {
+    color: #000;
+  }
 }
 
 // Home page specific styling
@@ -680,9 +690,9 @@ div[style*="paddingTop: 80px"] {
   color: $gray-600; // Default
   margin-bottom: 0;
 
-  // Light mode - make it darker for better contrast
+  // Light mode - make it black for maximum visibility
   :root:not([data-theme="dark"]) & {
-    color: #333;
+    color: #000;
   }
 }
 
@@ -696,9 +706,9 @@ div[style*="paddingTop: 80px"] {
     filter: grayscale(0.3);
     transition: all 0.3s ease;
 
-    // Light mode - make icons dark
+    // Light mode - make icons black for maximum visibility
     :root:not([data-theme="dark"]) & {
-      color: #333;
+      color: #000;
     }
   }
 
@@ -1042,9 +1052,9 @@ div[style*="paddingTop: 80px"] {
   padding: 0.75rem 0.5rem;
   color: #fff; // Default dark mode
 
-  // Light mode - make text dark
+  // Light mode - make text black for maximum visibility
   :root:not([data-theme="dark"]) & {
-    color: #333;
+    color: #000;
   }
 
   .feature-mini-icon {
@@ -1054,9 +1064,9 @@ div[style*="paddingTop: 80px"] {
     filter: grayscale(0.5);
     transition: all 0.3s ease;
 
-    // Light mode - make icons dark
+    // Light mode - make icons black for maximum visibility
     :root:not([data-theme="dark"]) & {
-      color: #333;
+      color: #000;
     }
   }
 
@@ -1071,9 +1081,9 @@ div[style*="paddingTop: 80px"] {
     color: #fff; // Default dark mode
     white-space: nowrap;
 
-    // Light mode - make text dark
+    // Light mode - make text black for maximum visibility
     :root:not([data-theme="dark"]) & {
-      color: #333;
+      color: #000;
     }
   }
 }
@@ -1082,9 +1092,9 @@ div[style*="paddingTop: 80px"] {
 .home-footer-text {
   color: #fff !important; // Default dark mode
 
-  // Light mode - make text dark
+  // Light mode - make text black for maximum visibility
   :root:not([data-theme="dark"]) & {
-    color: #666 !important;
+    color: #000 !important;
   }
 }
 
