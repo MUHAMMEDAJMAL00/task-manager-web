@@ -15,7 +15,7 @@ function Home() {
 
   return (
     <div
-      className=" d-flex align-items-center justify-content-center min-vh-100  mt-5 pt-3 shadow mx-auto w-100"
+      className=" d-flex align-items-center justify-content-center min-vh-100  mt-5 pt-3 pb-5 shadow mx-auto w-100"
       style={{ minHeight: "calc(100vh - 160px)" }}
     >
       <Container fluid>
@@ -33,7 +33,7 @@ function Home() {
               </h1>
               <div className="hero-divider mx-auto mb-4"></div>
 
-              <p className="hero-subtitle mb-5 px-2">
+              <p className="hero-subtitle text-whitemb-5 px-2">
                 Transform your productivity with our beautifully crafted task
                 management experience
               </p>
@@ -45,7 +45,7 @@ function Home() {
                 {isAuthenticated ? (
                   <div className="text-center">
                     <div className="welcome-section mb-4">
-                      <h3 className="welcome-title mb-3">
+                      <h3 className="welcome-title text-white mb-3">
                         Welcome back,
                         <br className="d-sm-none" />
                         <span className="text-primary fw-bold">
@@ -53,7 +53,7 @@ function Home() {
                         </span>
                         !
                       </h3>
-                      <p className="welcome-text">
+                      <p className="welcome-text text-white">
                         Ready to conquer your tasks and boost your productivity?
                       </p>
                     </div>

@@ -103,16 +103,17 @@ function TaskList() {
 
   return (
     <>
-      <div className="tasks-header">
-        <Row className="mb-3 mt-4 align-items-center">
-          <Col xs={12} sm={6} md={8}>
-            <h2 className="text-light mb-2 mb-sm-0">My Tasks</h2>
+      <div className="tasks-header ">
+        <Row className="mb-3 mt-4 align-items-center g-3  ">
+          <Col xs={12} sm={8} md={8}>
+            <h2 className="text-light mb-0">My Tasks</h2>
           </Col>
-          <Col xs={12} sm={6} md={4} className="text-sm-end">
-            <Button 
-              variant="primary" 
+          <Col xs={12} sm={4} md={4} className="text-sm-end">
+            <Button
+              variant="primary"
               onClick={() => setShowModal(true)}
               className="w-100 w-sm-auto"
+              size="lg"
             >
               Add New Task
             </Button>
@@ -126,36 +127,28 @@ function TaskList() {
         placeholder="Search tasks by title..."
       />
 
-      <Row className="mb-3">
+      <Row className="mb-4">
         <Col xs={12}>
-          <div className="d-flex flex-column flex-sm-row gap-2 gap-sm-0">
-            <ButtonGroup className="w-100 w-sm-auto">
-              <Button
-                variant={filter === "all" ? "primary" : "outline-primary"}
-                onClick={() => handleFilterChange("all")}
-                size="sm"
-              >
-                <span className="d-none d-md-inline">All</span>
-                <span className="d-md-none">All</span> ({items.length})
-              </Button>
-              <Button
-                variant={filter === "pending" ? "warning" : "outline-warning"}
-                onClick={() => handleFilterChange("pending")}
-                size="sm"
-              >
-                <span className="d-none d-md-inline">Pending</span>
-                <span className="d-md-none">Pending</span> ({items.filter((t) => !t.completed).length})
-              </Button>
-              <Button
-                variant={filter === "completed" ? "success" : "outline-success"}
-                onClick={() => handleFilterChange("completed")}
-                size="sm"
-              >
-                <span className="d-none d-md-inline">Completed</span>
-                <span className="d-md-none">Done</span> ({items.filter((t) => t.completed).length})
-              </Button>
-            </ButtonGroup>
-          </div>
+          <ButtonGroup className="w-100">
+            <Button
+              variant={filter === "all" ? "primary" : "outline-primary"}
+              onClick={() => handleFilterChange("all")}
+            >
+              All ({items.length})
+            </Button>
+            <Button
+              variant={filter === "pending" ? "warning" : "outline-warning"}
+              onClick={() => handleFilterChange("pending")}
+            >
+              Pending ({items.filter((t) => !t.completed).length})
+            </Button>
+            <Button
+              variant={filter === "completed" ? "success" : "outline-success"}
+              onClick={() => handleFilterChange("completed")}
+            >
+              Done ({items.filter((t) => t.completed).length})
+            </Button>
+          </ButtonGroup>
         </Col>
       </Row>
 
