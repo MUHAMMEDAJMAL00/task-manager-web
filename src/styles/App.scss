@@ -192,6 +192,13 @@ div[style*="paddingTop: 80px"] {
   }
 }
 
+// Add New Task button stability
+.tasks-header .btn {
+  white-space: nowrap !important;
+  min-width: fit-content !important;
+  flex-shrink: 0 !important;
+}
+
 // Mobile-specific improvements
 .list-group-item {
   @media (max-width: 768px) {
